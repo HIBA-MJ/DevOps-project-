@@ -1,0 +1,3 @@
+MSE: 0.25906491510584634
+Rows after cleaning: 10357
+Average rating: 4.188112341722555
