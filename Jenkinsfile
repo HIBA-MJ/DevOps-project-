@@ -2,10 +2,19 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_DIR = "/opt/devops-project"
-        JOB_NAME = "devops-job"
-           }
- 
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
+        MINIKUBE_HOME = '/var/lib/jenkins/.minikube'
+    }
+
+    stages {
+
+        stage('Start Minikube') {
+            steps {
+                sh '''
+                export MINIKUBE_HOME=$MINIKUBE_HOME
+                minikube start --driver=docker || true
+                '''
+            }
         }
 
         stage('Check Kubernetes') {
@@ -16,22 +25,19 @@ pipeline {
 
         stage('Delete Old Job') {
             steps {
-                sh 'kubectl delete job $JOB_NAME || true'
+                sh 'kubectl delete job devops-job --ignore-not-found'
             }
         }
 
         stage('Apply Job') {
             steps {
-                sh '''
-                cd $PROJECT_DIR
-                kubectl apply -f job.yaml
-                '''
+                sh 'kubectl apply -f /opt/devops-project/job.yaml'
             }
         }
 
         stage('Wait for Completion') {
             steps {
-                sh 'kubectl wait --for=condition=complete job/$JOB_NAME --timeout=180s'
+                sh 'kubectl wait --for=condition=complete job/devops-job --timeout=300s'
             }
         }
 
@@ -49,7 +55,7 @@ pipeline {
 
         stage('Logs') {
             steps {
-                sh 'kubectl logs job/$JOB_NAME'
+                sh 'kubectl logs job/devops-job'
             }
         }
     }
