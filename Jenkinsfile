@@ -4,14 +4,8 @@ pipeline {
     environment {
         PROJECT_DIR = "/opt/devops-project"
         JOB_NAME = "devops-job"
-    }
-
-    stages {
-
-        stage('Start Minikube') {
-            steps {
-                sh 'minikube start --driver=docker || true'
-            }
+           }
+ 
         }
 
         stage('Check Kubernetes') {
