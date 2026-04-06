@@ -73,3 +73,4 @@ upload_to_azure(metrics_file, "https://finalprojectstorage.blob.core.windows.net
 
 print("Done!")
 print("trigger test")
+print("New run test")
