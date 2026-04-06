@@ -72,3 +72,4 @@ upload_to_azure(cleaned_file, "https://finalprojectstorage.blob.core.windows.net
 upload_to_azure(metrics_file, "https://finalprojectstorage.blob.core.windows.net/data/output/metrics.txt?sp=rcw&st=2026-04-06T08:48:38Z&se=2050-04-06T17:03:38Z&sv=2024-11-04&sr=b&sig=%2F5BF4%2F9BLqXzjJUquYaCx64P2rsIGq9YExhJ4zUauIY%3D")
 
 print("Done!")
+print("trigger test")

@@ -7,8 +7,8 @@ spec:
     spec:
       containers:
       - name: devops-container
-        image: devops-app:latest
-        imagePullPolicy: Never
+        image: devops-image:latest
+        imagePullPolicy: IfNotPresent
         command: ["python", "main.py"]
       restartPolicy: Never
   backoffLimit: 2

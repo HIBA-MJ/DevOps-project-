@@ -1,4 +1,7 @@
-pandas
 numpy
 scikit-learn
-
+requests
+seaborn
+matplotlib
+pandas
+jenkins
