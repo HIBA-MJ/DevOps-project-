@@ -8,7 +8,7 @@ spec:
       containers:
       - name: devops-container
         image: hiba1mjd/devops-app:latest
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         command: ["python", "app.py"]
       restartPolicy: Never
   backoffLimit: 2
